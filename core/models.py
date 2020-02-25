@@ -32,7 +32,6 @@ class Branch(models.Model):
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user")
     branch = models.OneToOneField(Branch, on_delete=models.CASCADE, related_name="branch")
-    role = models.CharField(max_length=50, blank=True)
     experience = models.IntegerField(blank=True)
 
 
@@ -48,8 +47,8 @@ class Balance(models.Model):
 
 
 class Transaction(models.Model):
-    from_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="from")
-    where_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="where")
+    from_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="from_user")
+    where_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="where_user")
     date_time = models.DateTimeField(auto_now_add=True)
     value = models.IntegerField(blank=True)
 
